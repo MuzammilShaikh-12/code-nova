@@ -1,5 +1,4 @@
 import {
-    ClerkProvider,
     SignInButton,
     SignedIn,
     SignedOut,
@@ -8,14 +7,28 @@ import {
 
 export function AuthModal() {
   return (
-    <ClerkProvider>
+    <div className="flex items-center gap-4">
       <SignedOut>
-        <SignInButton />
+        <SignInButton mode="modal">
+        <button className="cn-primary-btn hover:bg-hoverbtn">
+          Sign In
+        </button>
+        </SignInButton>
       </SignedOut>
+
       <SignedIn>
-        <UserButton />
+      <div className="relative group">
+          <UserButton 
+            appearance={{
+              elements: {
+                colorPrimary: 'cn-glass',
+                userPreviewMainIdentifier: 'text-[#6247FF]',
+              }
+            }}
+          />
+          <div className="absolute inset-0 -z-10 bg-[#6247FF]/10 blur-xl" />
+        </div>
       </SignedIn>
-    
-    </ClerkProvider>
+    </div> 
   )
 }
