@@ -15,7 +15,8 @@ import SnippetPacket from "@/app/components/SnippetPacket";
 
 export default function Dashboard() {
 
-    //TODO: Mock data - in a real app this would come from API
+ 
+    //TODO: Mock data for now
   const userName = "Alex";
   const aiSuggestionsLeft = 2;
   const aiSuggestionsTotal = 3;

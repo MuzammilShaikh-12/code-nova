@@ -1,5 +1,6 @@
 
 
+import { syncUser } from "@/lib/syncUser";
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation";
 
@@ -8,8 +9,9 @@ export default async function AuthLayout({ children}: { children: React.ReactNod
 
     const authResult = await auth();
     const { userId } = authResult;
+    const user = await syncUser();
 
-    if(!userId) {
+    if(!userId || !user) {
         redirect("/");
     }
 
