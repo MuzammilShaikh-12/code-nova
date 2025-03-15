@@ -17,15 +17,18 @@ model User {
   enabledPacks String[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt 
+  snippets     Snippet[]
 
   @@index([clerkId]) // clerkId
 }
 
-model SnippetPack {
+model Snippet {
   id         String   @id @default(uuid())
   identifier String   @unique
   name       String
   language   String
   sourceUrl  String
+  user       User?    @relation(fields: [userId], references: [id])
+  userId     String?
 }
 

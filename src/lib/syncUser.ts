@@ -23,8 +23,14 @@ export async function syncUser() {
                 clerkId: clerkUser.id,
                 email: clerkUser.primaryEmailAddress?.emailAddress,
                 username: clerkUser.username,
-                preferences: {},
-                enabledPacks: []
+                preferences: {
+                    Theme: "Dark",
+
+                },
+                enabledPacks: [
+                    "C++",
+                    "Python",
+                ]
             }
         });
     }

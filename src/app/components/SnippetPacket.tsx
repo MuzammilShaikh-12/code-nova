@@ -1,15 +1,14 @@
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge, ChevronRightIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function SnippetPacket({
-    title, description, count, isNew
+    title, description, count
     // TODO: Fix this after doing snippet packets
 }: {
     title: string;
     description: string;
     count: number;
-    isNew: boolean;
 }) {
 
     return (
@@ -17,7 +16,6 @@ export default function SnippetPacket({
       <CardHeader className="pb-2">
         <div className="flex justify-between items-start">
           <CardTitle className="text-base">{title}</CardTitle>
-          {isNew && <Badge className="bg-primary">New</Badge>}
         </div>
         <CardDescription className="text-xs">{description}</CardDescription>
       </CardHeader>
