@@ -14,11 +14,13 @@ import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 
 export default function Onboarding() {
+
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
   const { user } = useUser();
   
-  // Create a synchronous-only schema for client-side validation
+  
   const clientSchema = onboardingSchemaValidation();
   
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
