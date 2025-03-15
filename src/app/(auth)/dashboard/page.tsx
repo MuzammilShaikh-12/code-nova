@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FileIcon, Settings2, BookOpenIcon, PlusCircleIcon, BoxesIcon, AlertCircleIcon } from "lucide-react";
+import { FileIcon, Settings2, PlusCircleIcon, BoxesIcon, AlertCircleIcon } from "lucide-react";
 
 import { Navbar } from "@/app/components/Navbar";
 import SideBar from "@/app/components/SideBar";
@@ -26,11 +26,6 @@ export default function Dashboard() {
     { title: "Node.js Utils", description: "Node.js helper functions", count: 31, isNew: false }
   ];
   
-  const newPacks = [
-    { title: "TailwindCSS", description: "Common utility patterns", count: 42, isNew: true },
-    { title: "Next.js 14", description: "Next.js 14 patterns & layouts", count: 28, isNew: true },
-    { title: "TypeScript Types", description: "Reusable type definitions", count: 36, isNew: true }
-  ];
 
     return (
         <div className="flex flex-col min-h-screen">
@@ -124,22 +119,6 @@ export default function Dashboard() {
           </Card>
         </TabsContent>
         
-        {/* New Tab */}
-        <TabsContent value="new" className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-lg font-medium">New Snippet Packs Available</h2>
-            <Button variant="outline" size="sm">
-              <BookOpenIcon className="mr-2 h-4 w-4" />
-              Browse All
-            </Button>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {newPacks.map((pack, idx) => (
-              <SnippetPacket key={idx} {...pack} />
-            ))}
-          </div>
-        </TabsContent>
-        
         {/* Settings Tab */}
         <TabsContent value="settings" className="space-y-4">
           <Card>
@@ -175,28 +154,8 @@ export default function Dashboard() {
             </CardFooter>
           </Card>
           
-          <Card>
-            <CardHeader>
-              <CardTitle>Latest Updates</CardTitle>
-              <CardDescription>Platform changes and new features</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <p className="text-sm font-medium">New TailwindCSS Snippet Pack</p>
-                  <p className="text-xs text-muted-foreground">March 8, 2025</p>
-                </div>
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <p className="text-sm font-medium">Improved AI Code Suggestions</p>
-                  <p className="text-xs text-muted-foreground">March 5, 2025</p>
-                </div>
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <p className="text-sm font-medium">Dark Mode Updates</p>
-                  <p className="text-xs text-muted-foreground">March 1, 2025</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          {/* TODO: Future Update details */}
+          
         </TabsContent>
       </Tabs>
     </div>

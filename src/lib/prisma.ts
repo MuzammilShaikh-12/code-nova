@@ -1,8 +1,27 @@
+"use server"
+
 import { currentUser } from "@clerk/nextjs/server";
 import { prisma } from "./db";
 
+// For Onboarding Unique Username
+export async function isUsernameUnique(username: string) {
+    const existingUser = await prisma.user.findFirst({
+      where: { username: username.trim() }
+    });
+    return !existingUser;
+  }
+// For Onboarding Username set
+  export async function setOnboardingUsername(username: string) {
+    const user = await currentUser();
+    if (!user) throw new Error("Unauthorized");
+  
+    return await prisma.user.update({
+      where: { clerkId: user.id },
+      data: { username: username.trim() }
+    });
+  }
 
-
+// For Storing User in DB
 export async function syncUser() {
 
     try{
@@ -17,12 +36,12 @@ export async function syncUser() {
             },
             update: {
                 email: clerkUser.primaryEmailAddress?.emailAddress,
-                username: clerkUser.username,
+                
             },
             create: {
                 clerkId: clerkUser.id,
                 email: clerkUser.primaryEmailAddress?.emailAddress,
-                username: clerkUser.username,
+                username: "",
                 preferences: {},
                 enabledPacks: []
             }

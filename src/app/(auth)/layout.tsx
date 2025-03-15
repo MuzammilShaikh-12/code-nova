@@ -1,6 +1,6 @@
 
 
-import { syncUser } from "@/lib/syncUser";
+import { syncUser } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation";
 
